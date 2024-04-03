@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:game_review/pages/user_detail_page.dart';
 
 import '../pages/game_detail_page.dart';
 
@@ -19,6 +20,7 @@ class _GamesListPageState  extends State<GamesListPage> {
   final _gameProvider = DataProvider();
   bool _showFavoritesOnly = false;
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -30,6 +32,15 @@ class _GamesListPageState  extends State<GamesListPage> {
               setState(() {
                 _showFavoritesOnly = value;
               });
+            },
+          ),
+          IconButton(
+            icon: const Icon(Icons.person),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => UserPage(widget.userId)),
+              );
             },
           ),
         ],
